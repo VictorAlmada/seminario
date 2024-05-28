@@ -6,6 +6,7 @@ include_once("templates/header.php");
 <!-- CORPO  -->
 
 <div class="container">
+<p id="msg">Testando mensagem</p>
     <!-- mensagem de sessão -->
     <?php if(isset($printMsg) && $printMsg != "") { ?>
         <p id="msg"><?= $printMsg ?></p>
@@ -32,14 +33,14 @@ include_once("templates/header.php");
                 <?php foreach($contacts as $contact) { ?>
                     <tr>
                         <!-- apresento os dados id, nome e phone -->
-                        <td scope="row"><?= $contact["id"] ?></td>
+                        <td scope="row" class="col-id"><?= $contact["id"] ?></td>
                         <td scope="row"><?= $contact["name"] ?></td>
                         <td scope="row"><?= $contact["phone"] ?></td>
                         <!-- após os dados coloco os icones de visualizar, editar e remover -->
                         <td class="actions">
-                            <a href="#"><i class="fas fa-eye check-icon"></i></a>
+                            <a href="show.php?id=<?= $contact["id"] ?>"><i class="fas fa-eye check-icon"></i></a>
                             <a href="#"><i class="far fa-edit edit-icon"></i></a>
-                            <button type="submit"><i class="fas fa-times delete-icon"></i></button>
+                            <button type="submit" class="delete-btn"><i class="fas fa-times delete-icon"></i></button>
                         </td>
                     </tr>
                 <?php } ?>

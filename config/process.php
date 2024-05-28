@@ -4,13 +4,32 @@ session_start();
 
 include_once("connection.php");
 
-$contacts = [];
+$id;
+if(!empty($_GET)) {
+       $id = $_GET["id"];
+}
+//retorna o dado de um contato
+if (!empty($id)) {
+       $query = "SELECT * FROM contacts WHERE id = :id";
+       $stmt = $conn->prepare($query);
+       $stmt->bindParam(":id", $id);
+       $stmt->execute();
+       $contact = $stmt->fetch();
 
-$query = "SELECT * FROM contacts";
+} else {
+       $contacts = [];
 
-$stmt = $conn->prepare($query);
-$stmt->execute();
-$contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+       //retorna todos os contatos
+       $query = "SELECT * FROM contacts";
+
+       $stmt = $conn->prepare($query);
+       $stmt->execute();
+       $contacts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+
+
+
 
 /*
 Prepara e executa uma consulta SQL para selecionar todos os registros da tabela "contacts" no banco de dados;
