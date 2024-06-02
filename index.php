@@ -6,7 +6,6 @@ include_once("templates/header.php");
 <!-- CORPO  -->
 
 <div class="container">
-<p id="msg">Testando mensagem</p>
     <!-- mensagem de sessão -->
     <?php if(isset($printMsg) && $printMsg != "") { ?>
         <p id="msg"><?= $printMsg ?></p>
@@ -39,8 +38,12 @@ include_once("templates/header.php");
                         <!-- após os dados coloco os icones de visualizar, editar e remover -->
                         <td class="actions">
                             <a href="show.php?id=<?= $contact["id"] ?>"><i class="fas fa-eye check-icon"></i></a>
-                            <a href="#"><i class="far fa-edit edit-icon"></i></a>
-                            <button type="submit" class="delete-btn"><i class="fas fa-times delete-icon"></i></button>
+                            <a href="edit.php?id=<?= $contact["id"] ?>"><i class="far fa-edit edit-icon"></i></a>
+                            <form class="delete-form" action="config/process.php" method="POST">
+                                <input type="hidden" name="type" value="delete">
+                                <input type="hidden" name="id" value="<?= $contact["id"] ?>">
+                                <button type="submit" class="delete-btn"><i class="fas fa-times delete-icon"></i></button>
+                            </form>
                         </td>
                     </tr>
                 <?php } ?>
@@ -58,4 +61,4 @@ include_once("templates/header.php");
 <?php
 include_once("templates/footer.php");
 
-?>
+?>c

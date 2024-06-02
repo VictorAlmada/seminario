@@ -1,6 +1,13 @@
 .navbar-brand img {
     width: 50px;
+    margin: 10px;
 }
+
+.navbar-nav {
+    margin: 0 auto;
+    margin-right: 25px;
+}
+
 #main-title {
     text-align: center;
     margin: 15px 0 30px;
@@ -17,8 +24,8 @@
 }
 
 #contacts-table thead {
-    color: #fff;
-    background-color: #007bff
+    color: #FFF;
+    background-color: #007BFF;
 }
 
 .actions {
@@ -39,6 +46,11 @@
 .delete-icon {
     color: #bd2130;
 }
+
+.delete-form {
+    display: inline-block;
+}
+
 .delete-btn {
     background-color: transparent;
     border: none;
@@ -84,4 +96,20 @@
 
 #back-link:hover {
     text-decoration: none;
+}
+
+/* CREATE */
+#create-form, #edit-form {
+    max-width: 500px;
+    margin: 0 auto;   
+}
+.form-control {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+/* MOBILE */
+@media(max-width: 480px) {
+    #home-link {
+        display: none;
+    }
 }
